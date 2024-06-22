@@ -1,0 +1,22 @@
+{
+  // Extensions
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "material-icon-theme.files.associations": {
+    ".tool-versions": "go"
+  },
+
+  // IDE Configuration
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.tabSize": 4
+  },
+  "[go.mod]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.tabSize": 4
+  }
+}
