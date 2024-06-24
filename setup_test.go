@@ -1,14 +1,22 @@
 package main
 
 import (
+	"bytes"
+	"io"
 	"net/http"
 	"os"
 	"testing"
+
+	"fyne.io/fyne/v2/test"
 )
 
 var testApp Config
 
 func TestMain(m *testing.M) {
+	a := test.NewApp()
+
+	testApp.App = a
+	testApp.HTTPClient = client
 
 	os.Exit(m.Run())
 }
@@ -45,3 +53,11 @@ func NewTestClient(fn RoundTripFunc) *http.Client {
 		Transport: fn,
 	}
 }
+
+var client = NewTestClient(func(req *http.Request) *http.Response {
+	return &http.Response{
+		StatusCode: http.StatusOK,
+		Body:       io.NopCloser(bytes.NewBufferString(jsonToReturn)),
+		Header:     make(http.Header),
+	}
+})
