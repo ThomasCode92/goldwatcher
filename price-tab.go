@@ -25,6 +25,7 @@ func (app *Config) getChart() *canvas.Image {
 	err := app.downloadFile(apiURL, "gold_chart.png")
 	if err != nil {
 		// use bundled image
+		img = canvas.NewImageFromResource(resourceUnreachablePng)
 	} else {
 		img = canvas.NewImageFromFile("gold_chart.png")
 	}
