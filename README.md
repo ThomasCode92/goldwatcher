@@ -5,7 +5,7 @@ Keep track of the price of gold in (almost real-time) while monitoring your curr
 **About this Repository**<br />
 🌐 Project of the _[Building GUI Applications with Fyne and Go](https://www.udemy.com/course/building-gui-applications-with-fyne-and-go-golang/?couponCode=KEEPLEARNING)_ course.<br />
 ⭐ A _"Gold Price Monitor"_ application with SQL database.<br />
-🔍 Creating UI's, toolbar, database repositories, ...!
+🔍 Making API Requests, Refreshing the UI, database interactions,...
 
 ## Start the application
 
@@ -22,3 +22,10 @@ git clone https://github.com/ThomasCode92/goldwatcher
 cd goldwatcher    # navigate into project folder
 go run .          # start the program
 ```
+
+To run the unit tests, use the command `go test -v .`.
+
+## Data Resources
+
+The application retrieves gold price information through some API requests to [goldprice.org](https://goldprice.org/).<br />
+The price data, in JSON format, is accessed via an [API endpoint](https://data-asg.goldprice.org/dbXRates/usd) while the chart is available for download as a [.png file](https://goldprice.org/charts/gold_3d_b_k_usd_x.png).
