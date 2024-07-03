@@ -15,7 +15,7 @@ type Repository interface {
 	AllHoldings() ([]Holdings, error)
 	GetHoldingByID(id int64) (*Holdings, error)
 	InsertHolding(h Holdings) (*Holdings, error)
-	UpdateHolding(id int64, updated Holdings) (*Holdings, error)
+	UpdateHolding(id int64, updated Holdings) error
 	DeleteHolding(id int64) error
 }
 
