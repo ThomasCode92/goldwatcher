@@ -3,6 +3,7 @@ package repository
 import (
 	"database/sql"
 	"errors"
+	"strings"
 	"time"
 )
 
@@ -15,25 +16,25 @@ func NewSQLiteRepository(db *sql.DB) *SQLiteRepository {
 }
 
 func (r *SQLiteRepository) Migrate() error {
-	query := `
+	query := strings.TrimSpace(`
 		CREATE TABLE IF NOT EXISTS holdings (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			amount REAL NOT NULL,
 			purchase_date INTEGER NOT NULL,
 			purchase_price INTEGER
 		);
-	`
+	`)
 
 	_, err := r.Conn.Exec(query)
 	return err
 }
 
 func (r *SQLiteRepository) AllHoldings() ([]Holdings, error) {
-	query := `
+	query := strings.TrimSpace(`
 		SELECT id, amount, purchase_date, purchase_price
 		FROM holdings
 		ORDER BY purchase_date;
-	`
+	`)
 
 	rows, err := r.Conn.Query(query)
 	if err != nil {
@@ -60,7 +61,11 @@ func (r *SQLiteRepository) AllHoldings() ([]Holdings, error) {
 }
 
 func (r *SQLiteRepository) GetHoldingByID(id int64) (*Holdings, error) {
-	query := `SELECT id, amount, purchase_date, purchase_price FROM holdings WHERE id = ?;`
+	query := strings.TrimSpace(`
+		SELECT id, amount, purchase_date, purchase_price
+		FROM holdings
+		WHERE id = ?;
+	`)
 
 	row := r.Conn.QueryRow(query, id)
 
@@ -78,7 +83,10 @@ func (r *SQLiteRepository) GetHoldingByID(id int64) (*Holdings, error) {
 }
 
 func (r *SQLiteRepository) InsertHolding(h Holdings) (*Holdings, error) {
-	query := `INSERT INTO holdings (amount, purchase_date, purchase_price) VALUES (?, ?, ?);`
+	query := strings.TrimSpace(`
+		INSERT INTO holdings (amount, purchase_date, purchase_price)
+		VALUES (?, ?, ?);
+	`)
 
 	res, err := r.Conn.Exec(query, h.Amount, h.PurchaseDate.Unix(), h.PurchasePrice)
 	if err != nil {
@@ -99,7 +107,10 @@ func (repo *SQLiteRepository) UpdateHolding(id int64, updated Holdings) error {
 		return errors.New("invalid updated id")
 	}
 
-	query := "UPDATE HOLDINGS SET AMOUNT = ?, purchase_date = ?, purchase_price = ? where id = ?;"
+	query := strings.TrimSpace(`
+		UPDATE HOLDINGS SET AMOUNT = ?, purchase_date = ?, purchase_price = ?
+		WHERE id = ?;
+	`)
 
 	res, err := repo.Conn.Exec(query, updated.Amount, updated.PurchaseDate.Unix(), updated.PurchasePrice, id)
 	if err != nil {
