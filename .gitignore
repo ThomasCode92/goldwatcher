@@ -29,3 +29,6 @@ go.work.sum
 
 # Chart Images
 *_chart.png
+
+# Database
+sqlite.db

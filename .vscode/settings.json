@@ -1,11 +1,4 @@
 {
-  // Extensions
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "material-icon-theme.files.associations": {
-    ".tool-versions": "go-mod"
-  },
-
   // IDE Configuration
   "editor.defaultFormatter": "golang.go",
   "editor.tabSize": 4,
@@ -14,5 +7,27 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
-  }
+  },
+
+  // Extensions
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "material-icon-theme.files.associations": {
+    ".tool-versions": "go-mod"
+  },
+  "material-icon-theme.folders.associations": {
+    "repository": "database"
+  },
+
+  // SQL Tools - SQLite
+  "sqltools.useNodeRuntime": true,
+  "sqltools.autoOpenSessionFiles": false,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "goldwatcher",
+      "database": "./sqlite.db"
+    }
+  ]
 }
