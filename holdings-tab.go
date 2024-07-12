@@ -13,11 +13,14 @@ import (
 )
 
 func (app *Config) holdingsTab() *fyne.Container {
+	app.HoldingsTable = app.getHoldingsTable()
+
 	return nil
 }
 
 func (app *Config) getHoldingsTable() *widget.Table {
 	data := app.getHoldingSlice()
+	app.Holdings = data
 
 	t := widget.NewTable(
 		func() (int, int) {
