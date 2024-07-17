@@ -14,7 +14,10 @@ import (
 
 func (app *Config) holdingsTab() *fyne.Container {
 	app.HoldingsTable = app.getHoldingsTable()
-	holdingsContainer := container.NewVBox(app.HoldingsTable)
+	holdingsContainer := container.NewBorder(
+		nil, nil, nil, nil,
+		container.NewAdaptiveGrid(1, app.HoldingsTable),
+	)
 
 	return holdingsContainer
 }
