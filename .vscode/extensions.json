@@ -1,3 +1,8 @@
 {
-  "recommendations": ["golang.go", "streetsidesoftware.code-spell-checker"]
+  "recommendations": [
+    "golang.go",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-sqlite",
+    "streetsidesoftware.code-spell-checker"
+  ]
 }
