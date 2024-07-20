@@ -37,7 +37,7 @@ func (app *Config) getChart() *canvas.Image {
 	}
 
 	img.SetMinSize(fyne.Size{Width: 770, Height: 410})
-	img.FillMode = canvas.ImageFillOriginal
+	img.FillMode = canvas.ImageFillStretch
 
 	return img
 }

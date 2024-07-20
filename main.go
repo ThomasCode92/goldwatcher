@@ -15,15 +15,20 @@ import (
 )
 
 type Config struct {
-	App                 fyne.App
-	InfoLog             *log.Logger
-	ErrorLog            *log.Logger
-	DB                  repository.Repository
-	MainWindow          fyne.Window
-	PriceContainer      *fyne.Container
-	Toolbar             *widget.Toolbar
-	PriceChartContainer *fyne.Container
-	HTTPClient          *http.Client
+	App                            fyne.App
+	InfoLog                        *log.Logger
+	ErrorLog                       *log.Logger
+	DB                             repository.Repository
+	MainWindow                     fyne.Window
+	PriceContainer                 *fyne.Container
+	Toolbar                        *widget.Toolbar
+	PriceChartContainer            *fyne.Container
+	Holdings                       [][]interface{}
+	HoldingsTable                  *widget.Table
+	HTTPClient                     *http.Client
+	AddHoldingsPurchaseAmountEntry *widget.Entry
+	AddHoldingsPurchaseDateEntry   *widget.Entry
+	AddHoldingsPurchasePriceEntry  *widget.Entry
 }
 
 func main() {
@@ -46,6 +51,8 @@ func main() {
 
 	// create a database repository
 	myApp.setupDB(sqlDB)
+
+	currency = fyneApp.Preferences().StringWithFallback("currency", "USD")
 
 	// create and size a fyne window
 	myApp.MainWindow = fyneApp.NewWindow("GoldWatcher")
