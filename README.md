@@ -19,8 +19,9 @@ Once Go and Fyne are installed, follow these steps to start the application:
 
 ```bash
 git clone https://github.com/ThomasCode92/goldwatcher
-cd goldwatcher    # navigate into project folder
-go run .          # start the program
+cd goldwatcher                # navigate into project folder
+touch sqlite.db               # create SQLite DB file
+DB_PATH=./sqlite.db go run .  # start the application
 ```
 
 To run the unit tests, use the command `go test -v .`.
