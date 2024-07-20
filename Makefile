@@ -6,7 +6,7 @@ BUILD_NO=1
 ## build: build binary and package app
 build:
 	rm -rf ${BINARY_NAME}
-	fyne package -appVersion ${VERSION} -appBuild ${BUILD_NO} -name ${APP_NAME} -release
+	fyne package -appVersion ${VERSION} -appBuild ${BUILD_NO} -name ${APP_NAME} -icon icon.png -release
 	rm -f go-for-gold
 
 ## run: builds and runs the application
